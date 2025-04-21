@@ -92,8 +92,42 @@ function installPackages(){
     fi
 }
 
+
+
+
+function loginDockerUser(){
+    if [ -n "$GH_USER" ] && [ -n "$GH_KEY" ]; then
+        echo "Logging in Docker user with GitHub credentials"
+        docker login --username "$GH_USER" --password "$GH_KEY" ghcr.io 
+        if [ $? -eq 0 ]; then
+            echo "Docker login successful"
+        else
+            echo "Docker login failed"
+        fi
+    else
+        echo "GH_USER or GH_KEY is not set. Skipping Docker login."
+    fi
+}
+
+
+function setWakatime(){
+    if [ -n "$WAKATIME_KEY" ]; then
+        echo "Setting up Wakatime"
+        mkdir -p /root/.wakatime
+        echo "api_key = $WAKATIME_KEY" > /root/.wakatime.cfg
+        echo "Wakatime setup completed"
+    else
+        echo "WAKATIME_KEY is not set. Skipping Wakatime setup."
+    fi
+}
+
+
 settingRootUser
 installPackages
+loginDockerUser
+setWakatime
+
+
 
 if [ -n "$ROOT_PWD" ]; then
     echo '======================================================'

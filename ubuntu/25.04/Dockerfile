@@ -1,12 +1,12 @@
 FROM ubuntu:25.04
 
 RUN apt update \
-    && apt install -y bash sudo ca-certificates curl nano wget net-tools iputils-ping \
+    && apt install -y bash sudo ca-certificates curl nano wget net-tools iputils-ping htop iptables \
     iptables supervisor git openssh-server \
     && rm -rf /var/lib/apt/list/*
 
 ENV DOCKER_CHANNEL=stable \
-	DOCKER_VERSION=28.0.1 \
+	DOCKER_VERSION=28.1.1 \
 	DOCKER_COMPOSE_VERSION=v2.33.1 \
 	BUILDX_VERSION=v0.21.2 \
 	DEBUG=false
@@ -15,6 +15,11 @@ ENV ROOT_PWD=''
 ENV ROOT_SSH_PUBLIC_KEY=''
 ENV CUSTOM_SOFTWARES=''
 ENV SOFTWARES=''
+ENV WAKATIME_KEY: ''
+ENV GH_EMAIL: ''
+ENV GH_NAME: ''
+ENV GH_KEY: ''
+ENV GH_USER: ''
 
 
 

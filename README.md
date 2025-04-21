@@ -24,4 +24,9 @@ services:
       ROOT_SSH_PUBLIC_KEY: ''
       SOFTWARES: ''
       CUSTOM_SOFTWARES: 'go,nvm'
+      WAKATIME_KEY: ''
+      GH_USERNAME: ''
+      GH_EMAIL: ''
+      GH_NAME: ''
+      GH_KEY: ''
 ```
